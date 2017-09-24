@@ -1,0 +1,45 @@
+$bg_body: ;
+$bg_main: ;
+$bg_box_start: ;
+$color_box_start: ;
+$border_color: ;
+$number_of_items: 4;
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: $bg_body;
+}
+
+#main {
+	width: 60%;
+	padding: 2% 5%;
+	margin: 20px auto;
+	background-color: $bg_main;
+}
+
+h1 {
+	margin-bottom:20px;
+}
+
+#main div {
+	float: left;
+	width: 41%;
+	margin: 0 5% 20px 0;
+	border: 1px solid $border_color;
+	padding: 1%;
+}
+
+@for $i from 1 through $number-of-items {
+	#main div:nth-of-type(#{$i}) {
+		background-color: ;
+		color: ;
+	}
+}
+
+footer {
+	clear:both;
+}
