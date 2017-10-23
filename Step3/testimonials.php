@@ -18,10 +18,10 @@ Template Name: Testimonials Page
 
 					<header class="article-header module__inner__header">
 
-						<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+						<h1 class="page-title" itemprop="headline"><a href=\\"http://#\\"><?php the_title(); ?></a></h1>
 
 					</header> <?php // end article header ?>
-
+                   
 					<section class="entry-content cf module__inner__section" itemprop="articleBody">
 
 						<?php the_content(); ?>
@@ -88,6 +88,7 @@ Template Name: Testimonials Page
 										<div class="quote" itemprop="review" itemscope="" itemtype="http://schema.org/Review">
 
 											<blockquote class="testimonials-text" itemprop="reviewBody">
+											     <!--To show just part of the content what I should do it´s to add a new class that set the size of the contenteiner and give it an overflow from the content, that will be my first aproch -->
 												<p><?php the_content(); ?></p>
 												<hr>
 												<p><i><?php the_date(); ?></i></p>
@@ -98,7 +99,7 @@ Template Name: Testimonials Page
 											<?php endif; ?>
 
 											<cite class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-												<span itemprop="name"><?php the_title(); ?></span>
+												<span itemprop="name"><a href=\\"http://#\\"><?php the_title(); ?></a></span>
 											</cite><!--/.author-->
 
 										</div><!-- End .quote -->
@@ -162,5 +163,13 @@ Template Name: Testimonials Page
 		</div><!-- /end .inner-content -->
 
 	</div>
+	<? php 
+    //database I suppose
+    $testimonials_posts = new WP_Query( $testimonials_args );
+    //testimonias per page
+    $testimonialpp =6;
+    // 
+    
+?>
 
 <?php get_footer(); ?>
