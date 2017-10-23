@@ -17,6 +17,8 @@ Stay safe
 * Although this code will compile, it should be treated as pseudo-code. Do not worry about inefficient or ugly code. You are only looking for vulnerabilities that would allow users to abuse the system or issues that would give hackers with access to the code the ability to compromise different parts of the system (assuming those components actually existed).
 * Deliverable: Add comments to this README with explanations of the vulnerabilities you are able to find. For extra points, correct the source code to fix those issues. When finished, commit your changes.
 
+--I´m not so familiar to meteor, the first thig that I could check it´s that is not be a template for loging button, I try to runn the app to see what it´s really happening but unfurtunally it never runs, other thing that I read it tha coul be beter to replace Meteor.userId() to this.userId to be sure it refers to the user that is active on that section, I´m not pretty confident about this task ´cause I think I don´t complete understand meteor and it´s methods
+
 # Step 2: 3rd party Javascript integration
 * The file `chat.js` into the Step 2 folder initializes our chat service, Zopim, in the available languages. 
 * Our website has support for 6 languages, and this code has only specific greetings for 3 languages plus english. Change the code to add support for those missing languages. Use Google Translator for translated text. 
