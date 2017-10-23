@@ -7,6 +7,7 @@ $script = <<<EOT
 
   (function($){
 
+//Here we can found in every object the values we collect for the form to get an estimation of the pregnancy time, and the text that will be display for each language
 var vals = {
   en: {
     fields: {
@@ -171,7 +172,7 @@ var vals = {
     }
   }
 };
-
+//Get the Estimated pregnancy day base on a difernci from the actual date and the selected date 
 var getTotalDaysFrom = function(then) {
   var now = new Date();
 
@@ -179,32 +180,32 @@ var getTotalDaysFrom = function(then) {
   var aDay = 1000 * 60 * 60 * 24;
   return Math.floor(diff/aDay);
 }
-
+//Take the info from input date selected 
 var getSelectedDate = function(context) {
   var thenArray = $(context).val().split("/");
   return new Date(thenArray[2], thenArray[1]-1, thenArray[0]);
 }
-
+//Based on total day make a diference to get estimated weeks
 var getWeeks = function(totalDays) {
   return Math.floor(totalDays/7);
 }
-
+//subtract between the total day and week to obtains remaining days 
 var getDays = function(totalDays) {
   return Math.floor(totalDays - getWeeks(totalDays) * 7);
 }
-
+//Form the string for estimated weeks of pregnancy
 var getWeekText = function(weeks, translatedWeek) {
   return (weeks > 0) ? (weeks + " " + translatedWeek) : "";
 }
-
+//Form the string for estimated days of pregnancy
 var getDayText = function(days, translatedDay) {
   return (days > 0) ? (days + " " + translatedDay) : "";
 }
-
+//if wweks and day are display trnslate &
 var getAndText = function(days, weeks, translatedAnd) {
   return (weeks > 0 && days > 0) ? (" " + translatedAnd + " ") : "";
 }
-
+//Join the strings we obtain in past functions
 var getEstimatedLMPText = function(totalDays, translatedWeek, translatedDay, translatedAnd) {
     var weeks = getWeeks(totalDays);
     var days = getDays(totalDays);
@@ -214,7 +215,7 @@ var getEstimatedLMPText = function(totalDays, translatedWeek, translatedDay, tra
     var andText = getAndText(days, weeks, translatedAnd);
     return weekText + andText + dayText;
 }
-
+// this function display the reminder message of ten weeks 
 var setTenWeekReminder = function(reminderText, insertAfterSelector) {
   var divId = "tenWeekReminder";
   var replaceWithText = "<div id=\"" + divId + "\"><h5>" + reminderText + "</h5></div>";
@@ -224,15 +225,15 @@ var setTenWeekReminder = function(reminderText, insertAfterSelector) {
     $( replaceWithText ).insertAfter(insertAfterSelector);
   }
 };
-
+//Afet the remnder was display this function hide it
 var hideTenWeekReminder = function() {
   $("#tenWeekReminder").hide();
 }
-
+//Display 
 var updateWeeksLabel = function(newText, labelSelector) {
   $(labelSelector).text(newText);
 };
-
+//Display the radio buttons to confirm the week and display the next button in case the week number it´s 8 or less showing first the ten week reminder 
 var handleDateChange = function(language, totalDays) {
   var v = vals[language];
   var vt = v["text"];
@@ -282,7 +283,7 @@ var handleDateChange = function(language, totalDays) {
     }
   }
 }
-
+//
 $.each(vals, function(language, v) {
   var vf = v['fields'];
 
@@ -388,6 +389,16 @@ function bones_register_sidebars() {
     'after_widget' => '</div>',
     'before_title' => '<h2 class="h3 module__title">',
     'after_title' => '</h2>',
+  ));
+    
+ register_sidebar(array(
+    'id' => 'sidebar-advertising',
+    'name' => __( 'Advertising sidebar', 'safe2choose-test' ),
+    'description' => __( 'Advertising sidebar'),
+    'before_widget' => '<div id="%1$s" class="module--primary">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="module__title">',
+    'after_title' => '</h3>',
   ));
 
   
